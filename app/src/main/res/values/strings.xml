@@ -1,3 +1,59 @@
 <resources>
-    <string name="app_name">OSAGO Calculator</string>
+    <string name="app_name">Калькулятор ОСАГО</string>
+
+    <string name="your_coefficient">Ваши коэффициенты</string>
+
+    <string name="calculate_button">Рассчитать ОСАГО</string>
+
+    <string name="coefficient_formula"><b><font color="#61b8f9">БТ</font>\u00D7<font color = "#61b8f9">КМ</font>\u00D7<font color = "#61b8f9">КТ</font>\u00D7<font color = "#61b8f9">КБМ</font>\u00D7<font color = "#61b8f9">КО</font>\u00D7<font color = "#61b8f9">КВС</font></b></string>
+
+    <string name="city">Город регистрации собственника</string>
+    <string name="car_power">Мощность автомобиля</string>
+    <string name="number_drivers">Сколько водителей</string>
+    <string name="driver_age">Возраст младшего из водителей</string>
+    <string name="min_experience">Минимальный стаж водителя</string>
+    <string name="year_accident">Сколько лет не было аварий</string>
+
+
+    <string-array name="BT">
+        <item>БТ</item>
+        <item>(базовый тариф)</item>
+        <item>Устанавливает страховая\nкомпания</item>
+        <item>2 754 - 4 432 ₽</item>
+    </string-array>
+
+    <string-array name="KM">
+        <item>КМ</item>
+        <item>(коэфф. мощности)</item>
+        <item>Чем мощнее автомобиль,\nтем дороже страховой полис</item>
+        <item>0,6 - 1,6</item>
+    </string-array>
+
+    <string-array name="KT">
+        <item>КТ</item>
+        <item>(территориальный коэфф.)</item>
+        <item>Определяется по прописке\nсобственника автомобиля</item>
+        <item>0,64 - 1,99</item>
+    </string-array>
+
+    <string-array name="KBM">
+        <item>КБМ</item>
+        <item>(коэфф. безаварийности)</item>
+        <item>Учитывается только самый\nвысокий коэффициент из всех\nводителей</item>
+        <item>0,5 - 2,45</item>
+    </string-array>
+
+    <string-array name="KBC">
+        <item>КВС</item>
+        <item>(коэфф. возраст/стаж)</item>
+        <item>Чем больше возраст и стаж\nу вписанного в полис водителя,\nтем дешевле будет полис</item>
+        <item>0,90 - 1,93</item>
+    </string-array>
+
+    <string-array name="KO">
+        <item>КО</item>
+        <item>(коэфф. ограничений)</item>
+        <item>Полис с ограниченным списком\nводителей будет стоить дешевле</item>
+        <item>1 или 1,99</item>
+    </string-array>
 </resources>

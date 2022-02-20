@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="16dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginBottom="16dp"
+    xmlns:tool="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/textAbbreviation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        tool:text = "БТ"/>
+
+    <TextView
+        android:id="@+id/textDecoding"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textColor="@color/text_explanation"
+        app:layout_constraintBottom_toBottomOf="@+id/textAbbreviation"
+        app:layout_constraintEnd_toEndOf="@+id/textInfo"
+        app:layout_constraintStart_toEndOf="@+id/textAbbreviation"
+        app:layout_constraintTop_toTopOf="@+id/textAbbreviation"
+        tool:text="(базовый тариф)" />
+
+    <TextView
+        android:id="@+id/textInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/input_text"
+        app:layout_constraintEnd_toStartOf="@+id/valueCoefficient"
+        app:layout_constraintStart_toStartOf="@+id/textAbbreviation"
+        app:layout_constraintTop_toBottomOf="@+id/textAbbreviation"
+        tool:text="Устанавливает страховая\nкомпания"/>
+
+    <TextView
+        android:id="@+id/valueCoefficient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/textInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textAbbreviation"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        tool:text="2 754 - 4 432 Р"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
