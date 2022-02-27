@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.OSAGOCalculator" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.OSAGOCalculator" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -12,5 +12,59 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@color/back</item>
     </style>
+
+    <style name="CardViewStyle">
+        <item name="cardCornerRadius">14dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="android:layout_margin">16dp</item>
+    </style>
+
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusBottomStart">22dp</item>
+        <item name="boxCornerRadiusBottomEnd">22dp</item>
+        <item name="boxCornerRadiusTopEnd">22dp</item>
+        <item name="boxCornerRadiusTopStart">22dp</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxBackgroundColor">@color/back</item>
+    </style>
+
+    <style name="ButtonText" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="textAllCaps">false</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="BottomButton" parent="@style/Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/back</item>
+        <item name="android:textAppearance">@style/InputText</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="TextCaption" parent="@style/TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="InputText" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/input_text</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="InvisibleFocus">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:inputType">none</item>
+        <item name="android:cursorVisible">false</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textAppearance">@style/InputText</item>
+    </style>
+
+    <style name="HeadText"  parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textSize">30sp</item>
+    </style>
+
 </resources>
