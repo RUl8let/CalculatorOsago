@@ -3,7 +3,9 @@ package com.rul8let.osagocalculator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.rul8let.osagocalculator.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainBinding

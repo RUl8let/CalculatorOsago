@@ -6,21 +6,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rul8let.osagocalculator.R
 import com.rul8let.osagocalculator.databinding.InputInfoItemBinding
+import com.rul8let.osagocalculator.ui.InfoInputEnum
 import com.rul8let.osagocalculator.ui.model.InputInfoItem
 
 class InInputInfoViewHolder (itemView : View) : RecyclerView.ViewHolder(itemView){
 
     private val binding = InputInfoItemBinding.bind(itemView)
 
-    fun bind(item: InputInfoItem, clickInputItem: () -> Unit) {
+    fun bind(item: InputInfoItem, clickInputItem: (InfoInputEnum) -> Unit) {
         binding.inputText.hint = itemView.resources.getText(item.type.stringResId)
         // Если нет текста введенного пользователем, то отключается hint для того что бы отобразить больше одной строчки
         binding.layoutText.isHintEnabled = item.texts.isNotEmpty()
+        binding.inputText.setText(item.texts)
 
         binding.inputText.setOnClickListener {
-            clickInputItem()
+            clickInputItem(item.type)
         }
-
     }
 
     companion object{
