@@ -3,9 +3,10 @@ package com.rul8let.osagocalculator.ui.adapter.input
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import com.rul8let.osagocalculator.ui.InfoInputEnum
 import com.rul8let.osagocalculator.ui.model.InputInfoItem
 
-class InputInfoAdapter (private val clickInputItem: () -> Unit)
+class InputInfoAdapter(private val clickInputItem: (InfoInputEnum) -> Unit)
     : ListAdapter<InputInfoItem, InInputInfoViewHolder>(InputInfoCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InInputInfoViewHolder {

@@ -17,7 +17,7 @@
     </fragment>
     <dialog
         android:id="@+id/bottomInputFragment"
-        android:name="com.rul8let.osagocalculator.ui.screen.BottomInputFragment"
+        android:name="com.rul8let.osagocalculator.ui.dialog.BottomInputFragment"
         android:label="BottomInputFragment" />
     <fragment
         android:id="@+id/priceCalculationFragment"

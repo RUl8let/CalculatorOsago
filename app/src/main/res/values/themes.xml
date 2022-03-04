@@ -21,7 +21,7 @@
         <item name="android:layout_margin">16dp</item>
     </style>
 
-    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="boxCornerRadiusBottomStart">22dp</item>
         <item name="boxCornerRadiusBottomEnd">22dp</item>
         <item name="boxCornerRadiusTopEnd">22dp</item>
@@ -37,7 +37,7 @@
     </style>
 
     <style name="BottomButton" parent="@style/Widget.MaterialComponents.Button">
-        <item name="android:backgroundTint">@color/back</item>
+        <item name="android:backgroundTint">@color/sl_button_enabled</item>
         <item name="android:textAppearance">@style/InputText</item>
         <item name="cornerRadius">12dp</item>
         <item name="android:gravity">center</item>
@@ -56,6 +56,7 @@
     <style name="InvisibleFocus">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
+        <item name="android:gravity">left</item>
         <item name="android:focusableInTouchMode">false</item>
         <item name="android:inputType">none</item>
         <item name="android:cursorVisible">false</item>
@@ -65,6 +66,12 @@
 
     <style name="HeadText"  parent="TextAppearance.MaterialComponents.Headline6">
         <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="DialogStyle" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
     </style>
 
 </resources>

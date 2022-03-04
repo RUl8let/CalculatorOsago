@@ -5,7 +5,10 @@
 
     <string name="calculate_button">Рассчитать ОСАГО</string>
 
-    <string name="coefficient_formula"><b><font color="#61b8f9">БТ</font>\u00D7<font color = "#61b8f9">КМ</font>\u00D7<font color = "#61b8f9">КТ</font>\u00D7<font color = "#61b8f9">КБМ</font>\u00D7<font color = "#61b8f9">КО</font>\u00D7<font color = "#61b8f9">КВС</font></b></string>
+    <string name="coefficient_formula">&lt;b>&lt;font color="#61b8f9">%1$s&lt;/font>\u00D7&lt;font color = "#61b8f9">%2$s&lt;/font>\u00D7&lt;font color = "#61b8f9">%3$s&lt;/font>\u00D7&lt;font color = "#61b8f9">%4$s&lt;/font>\u00D7&lt;font color = "#61b8f9">%5$s&lt;/font>\u00D7&lt;font color = "#61b8f9">%6$s&lt;/font>&lt;/b></string>
+
+    <string name="next">Далее</string>
+    <string name="confirm">Подтвердить</string>
 
     <string name="city">Город регистрации собственника</string>
     <string name="car_power">Мощность автомобиля</string>
