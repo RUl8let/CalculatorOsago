@@ -19,6 +19,9 @@ import javax.inject.Inject
 class CalculatorViewModel @Inject constructor(
     private val repository: Repository
 ): ViewModel() {
+
+    private val infoInputEnum = InfoInputEnum.values()
+
     private val _expanded = MutableLiveData<Boolean>(false)
     val expanded : LiveData<Boolean> = _expanded
 
@@ -40,7 +43,7 @@ class CalculatorViewModel @Inject constructor(
 
     private fun generationInputList() : List<InputInfoItem>{
         val list = mutableListOf<InputInfoItem>()
-        InfoInputEnum.values().forEach {
+        infoInputEnum.forEach {
             list.add( InputInfoItem(it,""))
         }
         return list
@@ -57,7 +60,7 @@ class CalculatorViewModel @Inject constructor(
             inputInfoList.value!![InfoInputEnum.NUMBER_DRIVERS.ordinal].texts == "0") {
             nextType++
         }
-        _selectInput.value = InfoInputEnum.values()[nextType]
+        _selectInput.value = infoInputEnum[nextType]
     }
 
     fun backInputType() {
@@ -67,7 +70,7 @@ class CalculatorViewModel @Inject constructor(
             inputInfoList.value!![InfoInputEnum.NUMBER_DRIVERS.ordinal].texts == "0") {
             backType--
         }
-        _selectInput.value = InfoInputEnum.values()[backType]
+        _selectInput.value = infoInputEnum[backType]
     }
 
     fun updateInputText(text: String) {
@@ -81,14 +84,14 @@ class CalculatorViewModel @Inject constructor(
     private fun getCoefficient(){
         var index = 0
         inputInfoList.value!!.forEach {
-            if (!it.texts.isNullOrEmpty()) index++
+            if (it.texts.isNotEmpty()) index++
         }
 
         if (inputInfoList.value!![InfoInputEnum.NUMBER_DRIVERS.ordinal].texts == "0"){
             index++
         }
 
-        if (index==InfoInputEnum.values().size){
+        if (index==infoInputEnum.size){
             loadData()
         }
     }
