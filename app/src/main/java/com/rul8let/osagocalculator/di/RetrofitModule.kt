@@ -1,6 +1,6 @@
 package com.rul8let.osagocalculator.di
 
-import com.rul8let.osagocalculator.data.network.CoefficientNetworkApi
+import com.rul8let.osagocalculator.data.network.OsagoNetworkApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,6 +22,6 @@ object RetrofitModule {
 
     @Provides
     @Singleton
-    fun providePokemonInfoRetrofit(retrofit: Retrofit): CoefficientNetworkApi =
-        retrofit.create(CoefficientNetworkApi::class.java)
+    fun provideOsagoInfoRetrofit(retrofit: Retrofit): OsagoNetworkApi =
+        retrofit.create(OsagoNetworkApi::class.java)
 }
