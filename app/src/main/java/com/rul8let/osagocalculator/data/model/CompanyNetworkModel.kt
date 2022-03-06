@@ -2,7 +2,7 @@ package com.rul8let.osagocalculator.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class PriceNetworkModel(
+data class CompanyNetworkModel(
 
     @SerializedName("offers")
     val offers : List<Offers>,

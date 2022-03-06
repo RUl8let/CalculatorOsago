@@ -9,8 +9,8 @@ import com.rul8let.osagocalculator.data.Repository
 import com.rul8let.osagocalculator.data.Response
 import com.rul8let.osagocalculator.ui.CoefficientEnum
 import com.rul8let.osagocalculator.ui.model.CoefficientItem
-import com.rul8let.osagocalculator.ui.model.PriceCalculation.*
-import com.rul8let.osagocalculator.ui.model.PriceCalculation
+import com.rul8let.osagocalculator.ui.model.CompanySealed.*
+import com.rul8let.osagocalculator.ui.model.CompanySealed
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -23,8 +23,8 @@ class PriceCalculationViewModel @Inject constructor(
     private val _coefficientList = MutableLiveData<List<CoefficientItem>>()
     val coefficientList : LiveData<List<CoefficientItem>> = _coefficientList
 
-    private val _pricePolicy = MutableLiveData<List<PriceCalculation>>(emptyList())
-    val pricePolicy : LiveData<List<PriceCalculation>> = _pricePolicy
+    private val _pricePolicy = MutableLiveData<List<CompanySealed>>(emptyList())
+    val pricePolicy : LiveData<List<CompanySealed>> = _pricePolicy
 
     private val _expanded = MutableLiveData<Boolean>(false)
     val expanded : LiveData<Boolean> = _expanded
@@ -51,7 +51,7 @@ class PriceCalculationViewModel @Inject constructor(
 
     private suspend fun loadDataPrices(){
         _pricePolicy.value = listOf(Load(), Load(), Load(), Load())
-        when (val response = repository.getDataPrices()){
+        when (val response = repository.getCompaniesData()){
             is Response.Success ->{
                 _pricePolicy.value = response.data ?: emptyList()
             }

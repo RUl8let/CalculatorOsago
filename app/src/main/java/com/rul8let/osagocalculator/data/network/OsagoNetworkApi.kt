@@ -1,6 +1,6 @@
 package com.rul8let.osagocalculator.data.network
 
-import com.rul8let.osagocalculator.data.model.PriceNetworkModel
+import com.rul8let.osagocalculator.data.model.CompanyNetworkModel
 import com.rul8let.osagocalculator.data.model.CoefficientNetworkModel
 import retrofit2.http.GET
 
@@ -10,5 +10,5 @@ interface OsagoNetworkApi {
     ): CoefficientNetworkModel
 
     @GET("startCalculation")
-    suspend fun getPolicyPrices(): PriceNetworkModel
+    suspend fun getCompany(): CompanyNetworkModel
 }

@@ -15,7 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.rul8let.osagocalculator.R
 import com.rul8let.osagocalculator.databinding.PriceCalculationScreenBinding
 import com.rul8let.osagocalculator.ui.adapter.coefficient.CoefficientInfoAdapter
-import com.rul8let.osagocalculator.ui.adapter.price.PricePolicyAdapter
+import com.rul8let.osagocalculator.ui.adapter.company.CompanyAdapter
+import com.rul8let.osagocalculator.ui.model.CompanySealed.CompanyItem
+import com.rul8let.osagocalculator.ui.screen.calculator.CalculatorFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -82,7 +84,7 @@ class PriceCalculationFragment : Fragment() {
     }
 
     private fun PriceCalculationScreenBinding.bindPriceAdapter(){
-        val adapter = PricePolicyAdapter()
+        val adapter = CompanyAdapter(clickInputItem)
         priceList.adapter = adapter
         priceList.layoutManager = LinearLayoutManager(root.context)
         priceList.isNestedScrollingEnabled = false
@@ -90,6 +92,12 @@ class PriceCalculationFragment : Fragment() {
         viewModel.pricePolicy.observe(viewLifecycleOwner){
             adapter.submitList(it)
         }
+    }
+
+    private val clickInputItem = fun (data : CompanyItem){
+        findNavController().previousBackStackEntry?.
+        savedStateHandle?.set(CalculatorFragment.keySelectItemPrice, data)
+        findNavController().popBackStack()
     }
 
     override fun onDestroyView() {

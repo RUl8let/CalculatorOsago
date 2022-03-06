@@ -17,6 +17,7 @@ import com.rul8let.osagocalculator.databinding.CalculatorScreenBinding
 import com.rul8let.osagocalculator.ui.InfoInputEnum
 import com.rul8let.osagocalculator.ui.adapter.coefficient.CoefficientInfoAdapter
 import com.rul8let.osagocalculator.ui.adapter.input.InputInfoAdapter
+import com.rul8let.osagocalculator.ui.model.CompanySealed.CompanyItem
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -50,6 +51,12 @@ class CalculatorFragment : Fragment(){
             findNavController().navigate(R.id.action_calculatorFragment_to_priceCalculationFragment)
         }
 
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<CompanyItem>(keySelectItemPrice)
+            ?.observe(viewLifecycleOwner) { priceData->
+                val action = CalculatorFragmentDirections
+                    .actionCalculatorFragmentToBottomSelectCompanyFragment(priceData)
+                findNavController().navigate(action)
+            }
     }
 
     private fun CalculatorScreenBinding.bindInfoCard(){
@@ -106,6 +113,10 @@ class CalculatorFragment : Fragment(){
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val keySelectItemPrice = "keySelectItemPrice"
     }
 
 }

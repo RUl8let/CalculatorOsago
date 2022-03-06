@@ -1,11 +1,11 @@
 package com.rul8let.osagocalculator.data
 
-import com.rul8let.osagocalculator.data.model.PriceNetworkModel
+import com.rul8let.osagocalculator.data.model.CompanyNetworkModel
 import com.rul8let.osagocalculator.data.model.CoefficientNetworkModel
 import com.rul8let.osagocalculator.data.network.OsagoNetworkApi
 import com.rul8let.osagocalculator.ui.CoefficientEnum
 import com.rul8let.osagocalculator.ui.model.CoefficientItem
-import com.rul8let.osagocalculator.ui.model.PriceCalculation.PriceCalculationItem
+import com.rul8let.osagocalculator.ui.model.CompanySealed.CompanyItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import retrofit2.HttpException
@@ -33,10 +33,10 @@ class RepositoryImpl @Inject constructor (
         }
     }
 
-    override suspend fun getDataPrices(): Response<List<PriceCalculationItem>> {
+    override suspend fun getCompaniesData(): Response<List<CompanyItem>> {
         return try {
-            val response = coefficientNetworkApi.getPolicyPrices()
-            Response.Success(mapPrices(response))
+            val response = coefficientNetworkApi.getCompany()
+            Response.Success(mapCompanies(response))
         } catch (e : IOException){
             Response.Error(e)
         } catch (e : HttpException){
@@ -44,10 +44,10 @@ class RepositoryImpl @Inject constructor (
         }
     }
 
-    private fun mapPrices(response: PriceNetworkModel) : List<PriceCalculationItem>{
-        val list = mutableListOf<PriceCalculationItem>()
+    private fun mapCompanies(response: CompanyNetworkModel) : List<CompanyItem>{
+        val list = mutableListOf<CompanyItem>()
         response.offers.forEach {
-            list.add(PriceCalculationItem(
+            list.add(CompanyItem(
                 name = it.name,
                 rating = it.rating,
                 price = it.price.toString(),

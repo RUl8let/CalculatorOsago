@@ -1,18 +1,22 @@
 package com.rul8let.osagocalculator.ui.model
 
-sealed class PriceCalculation(){
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+sealed class CompanySealed(){
     abstract fun getType() : Int
 
-    data class PriceCalculationItem (
+    @Parcelize
+    data class CompanyItem (
         val name : String,
         val rating : String,
         val price : String,
         val backgroundColor : String,
-        val UrlSVG : String?) : PriceCalculation() {
+        val UrlSVG : String?) : Parcelable, CompanySealed() {
         override fun getType() = data
     }
 
-    class Load() : PriceCalculation() {
+    class Load() : CompanySealed() {
         override fun getType() = load
     }
 

@@ -8,6 +8,10 @@
     <string name="calculation_policy_price">Расчёт цены полиса</string>
     
     <string name="calculation_policy_price_button">Рассчитать точную цену и купить</string>
+    
+    <string name="completed_policy"><b>Ваш полис успешно оформлен</b></string>
+
+    <string name="ready">Готово</string>
 
     <string name="coefficient_formula">&lt;b>&lt;font color="#61b8f9">%1$s&lt;/font>\u00D7&lt;font color = "#61b8f9">%2$s&lt;/font>\u00D7&lt;font color = "#61b8f9">%3$s&lt;/font>\u00D7&lt;font color = "#61b8f9">%4$s&lt;/font>\u00D7&lt;font color = "#61b8f9">%5$s&lt;/font>\u00D7&lt;font color = "#61b8f9">%6$s&lt;/font>&lt;/b></string>
 
