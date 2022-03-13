@@ -10,13 +10,19 @@ import com.rul8let.osagocalculator.ui.model.CompanySealed.CompanyItem
 class CompanyAdapter(private val clickInputItem: (CompanyItem) -> Unit)
     :  ListAdapter<CompanySealed, RecyclerView.ViewHolder>(PricePolicyDiffCallback) {
 
+    private val load = 0
+    private val data = 1
+
     override fun getItemViewType(position: Int): Int {
-        return getItem(position).getType()
+        return when(getItem(position)){
+            is CompanyItem -> data
+            else -> load
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when(viewType){
-            CompanySealed.data->CompanyViewHolder.create(parent)
+            data->CompanyViewHolder.create(parent)
             else -> {
                 CompanyCalculationLoadViewHolder.create(parent)
             }
@@ -31,7 +37,7 @@ class CompanyAdapter(private val clickInputItem: (CompanyItem) -> Unit)
 
     object PricePolicyDiffCallback : DiffUtil.ItemCallback<CompanySealed>() {
         override fun areItemsTheSame(oldItem: CompanySealed, newItem: CompanySealed): Boolean {
-            return oldItem.getType()==newItem.getType()
+            return oldItem==newItem
         }
 
         override fun areContentsTheSame(oldItem: CompanySealed, newItem: CompanySealed): Boolean {

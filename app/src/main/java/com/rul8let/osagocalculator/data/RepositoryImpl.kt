@@ -52,22 +52,24 @@ class RepositoryImpl @Inject constructor (
                 rating = it.rating,
                 price = it.price.toString(),
                 backgroundColor = it.branding.backgroundColor,
-                UrlSVG = it.branding.bankLogoUrlSVG
+                UrlSVG = it.branding.bankLogoUrlSVG,
+                fontColor = it.branding.fontColor,
+                iconTitle = it.branding.iconTitle
             ))
         }
         return list
     }
 
     private fun mapCoefficient(response: CoefficientNetworkModel): List<CoefficientItem> {
-        val list = mutableListOf<CoefficientItem>()
-        CoefficientEnum.values().forEach { enum ->
+        val list = CoefficientEnum.generationBaseList().toMutableList()
+        for (id in 0 until CoefficientEnum.values().size){
             response.factors.forEach { factor->
-                if (enum.title == factor.title){
-                    list.add(CoefficientItem(
+                if (list[id].headerValue == factor.title){
+                    list[id] = CoefficientItem(
                         coefficient = factor.value,
-                        idArrayString = enum.textArrayId,
+                        idArrayString = list[id].idArrayString,
                         headerValue = factor.headerValue
-                    ))
+                    )
                 }
             }
         }

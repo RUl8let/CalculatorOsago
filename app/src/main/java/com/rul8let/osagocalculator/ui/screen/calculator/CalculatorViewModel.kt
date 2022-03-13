@@ -70,8 +70,7 @@ class CalculatorViewModel @Inject constructor(
     fun nextInputType() {
         val type = selectInput.value?.ordinal ?: 0
         var nextType = type+1
-        if (nextType==InfoInputEnum.DRIVER_AGE.ordinal &&
-            inputInfoList.value!![InfoInputEnum.NUMBER_DRIVERS.ordinal].texts == "0") {
+        if (nextType==InfoInputEnum.DRIVER_AGE.ordinal && checkNumberDrivers()) {
             nextType++
         }
         _selectInput.value = infoInputEnum[nextType]
@@ -80,15 +79,14 @@ class CalculatorViewModel @Inject constructor(
     fun backInputType() {
         val type = selectInput.value?.ordinal ?: 1
         var backType = type-1
-        if (backType==InfoInputEnum.DRIVER_AGE.ordinal &&
-            inputInfoList.value!![InfoInputEnum.NUMBER_DRIVERS.ordinal].texts == "0") {
+        if (backType==InfoInputEnum.DRIVER_AGE.ordinal && checkNumberDrivers()) {
             backType--
         }
         _selectInput.value = infoInputEnum[backType]
     }
 
     fun updateInputText(text: String) {
-        val list = inputInfoList.value!!.toMutableList()
+        val list = (inputInfoList.value ?: InfoInputEnum.generationBaseList()).toMutableList()
         val selectInputType = selectInput.value ?: InfoInputEnum.DRIVER_AGE
         list[selectInputType.ordinal] = InputInfoItem(selectInputType,text)
         _inputInfoList.value = list
@@ -97,13 +95,11 @@ class CalculatorViewModel @Inject constructor(
 
     private fun chekUpdateCoefficient(){
         var index = 0
-        inputInfoList.value!!.forEach {
+        inputInfoList.value?.forEach {
             if (it.texts.isNotEmpty()) index++
         }
 
-        if (inputInfoList.value!![InfoInputEnum.NUMBER_DRIVERS.ordinal].texts == "0"){
-            index++
-        }
+        if (checkNumberDrivers()) index++
 
         if (index==infoInputEnum.size){
             loadData()
@@ -116,4 +112,6 @@ class CalculatorViewModel @Inject constructor(
             repository.updateCoefficientData()
         }
     }
+
+    private fun checkNumberDrivers()=inputInfoList.value!![InfoInputEnum.NUMBER_DRIVERS.ordinal].texts == "0"
 }

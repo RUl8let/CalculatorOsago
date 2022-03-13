@@ -96,7 +96,7 @@ class PriceCalculationFragment : Fragment() {
 
     private val clickInputItem = fun (data : CompanyItem){
         findNavController().previousBackStackEntry?.
-        savedStateHandle?.set(CalculatorFragment.keySelectItemPrice, data)
+            savedStateHandle?.set(CalculatorFragment.keySelectItemPrice, data)
         findNavController().popBackStack()
     }
 

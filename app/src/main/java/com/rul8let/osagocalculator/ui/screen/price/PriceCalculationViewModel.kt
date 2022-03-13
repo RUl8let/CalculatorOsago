@@ -36,7 +36,6 @@ class PriceCalculationViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             repository.observerCoefficientData().collect{
-                Log.e("coefficent","test ${it}")
                 when (it){
                     is Response.Success -> {
                         _coefficientList.value = it.data ?: CoefficientEnum.generationBaseList()
@@ -50,7 +49,7 @@ class PriceCalculationViewModel @Inject constructor(
     }
 
     private suspend fun loadDataPrices(){
-        _pricePolicy.value = listOf(Load(), Load(), Load(), Load())
+        _pricePolicy.value = listOf(Load, Load, Load, Load)
         when (val response = repository.getCompaniesData()){
             is Response.Success ->{
                 _pricePolicy.value = response.data ?: emptyList()

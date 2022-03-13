@@ -52,13 +52,14 @@
 
             app:layout_constraintBottom_toBottomOf="@+id/cardImage"
             app:layout_constraintStart_toEndOf="@+id/cardImage"
-            tools:text="@string/coefficient_formula" />
+            tools:text="БТ" />
 
         <CheckBox
             android:id="@+id/checkBoxExpand"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:button="@drawable/sl_expand"
+            android:buttonTint="@color/text_explanation"
             app:layout_constraintBottom_toBottomOf="@+id/cardImage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/cardImage" />

@@ -1,25 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutText"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardInput"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:hintEnabled="false"
-        android:layout_margin="12dp"
-        style="@style/TextInputLayoutStyle">
+        android:layout_height="70dp"
+        android:backgroundTint="@color/back"
+        app:cardCornerRadius="16dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        app:cardElevation="0dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputText"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            style="@style/InvisibleFocus"
-            tools:hint="Город регистрации собственника"/>
+            android:layout_height="match_parent">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/hintUp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="14sp"
+                android:textColor="@color/input_text"
+                app:layout_constraintEnd_toEndOf="@+id/enteredText"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/enteredText"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Город регистрации собственника" />
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/enteredText"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:gravity="top"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textColorHint="@color/input_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hintUp"
+                tools:hint="Кременчуг-Константиновское" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>
