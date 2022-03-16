@@ -1,2 +1,1 @@
-# repo-21
-Армягов Никита
+# CalculatorOsago
