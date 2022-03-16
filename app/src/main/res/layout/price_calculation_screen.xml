@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/NestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/cardView2"
+        app:layout_constraintBottom_toTopOf="@+id/cardView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -17,19 +16,29 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/header_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:animateLayoutChanges="true"
-            android:focusableInTouchMode="true"
-            android:orientation="vertical">
+            android:focusableInTouchMode="true">
+
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/back"
+                app:srcCompat="@drawable/ic_left"
+                app:layout_constraintBottom_toBottomOf="@+id/headText"
+                app:layout_constraintStart_toStartOf="@+id/coefficients_info"
+                app:layout_constraintTop_toTopOf="@+id/headText"
+                app:tint="@color/black" />
 
             <TextView
                 android:id="@+id/headText"
-                style="@style/HeadText"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="@string/app_name"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="8dp"
+                android:text="@string/calculation_policy_price"
+                app:layout_constraintStart_toEndOf="@+id/backButton"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <include
@@ -38,26 +47,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/headText" />
 
-            <com.google.android.material.card.MaterialCardView
-                style="@style/CardViewStyle.noShadow"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/priceList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/coefficients_info">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/inputList"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp" />
-            </com.google.android.material.card.MaterialCardView>
+                app:layout_constraintTop_toBottomOf="@+id/coefficients_info" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -65,7 +68,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
+        android:id="@+id/cardView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -73,16 +76,12 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_margin="12dp"
-            android:enabled="false"
-            android:text="@string/calculate_button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/calculation_policy_price_button"
             style="@style/BottomButton"/>
 
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

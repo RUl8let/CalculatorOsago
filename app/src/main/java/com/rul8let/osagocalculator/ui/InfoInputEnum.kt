@@ -2,6 +2,7 @@ package com.rul8let.osagocalculator.ui
 
 import android.text.InputType
 import com.rul8let.osagocalculator.R
+import com.rul8let.osagocalculator.ui.model.InputInfoItem
 
 enum class InfoInputEnum (val stringResId : Int, val inputType : Int){
     CITY(R.string.city, InputType.TYPE_CLASS_TEXT),
@@ -9,5 +10,15 @@ enum class InfoInputEnum (val stringResId : Int, val inputType : Int){
     NUMBER_DRIVERS(R.string.number_drivers, InputType.TYPE_CLASS_NUMBER),
     DRIVER_AGE(R.string.driver_age, InputType.TYPE_CLASS_NUMBER),
     MIN_EXPERIENCE(R.string.min_experience, InputType.TYPE_CLASS_TEXT),
-    YEAR_ACCIDENT(R.string.year_accident, InputType.TYPE_CLASS_TEXT)
+    YEAR_ACCIDENT(R.string.year_accident, InputType.TYPE_CLASS_TEXT);
+
+    companion object {
+        fun generationBaseList(): List<InputInfoItem> {
+            val list = mutableListOf<InputInfoItem>()
+            values().forEach {
+                list.add( InputInfoItem(it,""))
+            }
+            return list
+        }
+    }
 }

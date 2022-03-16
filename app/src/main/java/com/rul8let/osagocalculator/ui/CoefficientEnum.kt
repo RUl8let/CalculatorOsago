@@ -1,6 +1,7 @@
 package com.rul8let.osagocalculator.ui
 
 import com.rul8let.osagocalculator.R
+import com.rul8let.osagocalculator.ui.model.CoefficientItem
 
 enum class CoefficientEnum (val textArrayId : Int, val title : String){
     BT(R.array.BT, "БТ"),
@@ -8,5 +9,21 @@ enum class CoefficientEnum (val textArrayId : Int, val title : String){
     KT(R.array.KT, "КТ"),
     KBM(R.array.KBM, "КБМ"),
     KO(R.array.KO, "КО"),
-    KBC(R.array.KBC, "КВС")
+    KBC(R.array.KBC, "КВС");
+
+    companion object {
+        fun generationBaseList(): List<CoefficientItem> {
+            val list = mutableListOf<CoefficientItem>()
+            values().forEach {
+                list.add(
+                    CoefficientItem(
+                        coefficient = "",
+                        idArrayString = it.textArrayId,
+                        headerValue = it.title
+                    )
+                )
+            }
+            return list
+        }
+    }
 }

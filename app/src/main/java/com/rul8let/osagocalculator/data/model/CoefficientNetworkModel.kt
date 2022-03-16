@@ -2,6 +2,11 @@ package com.rul8let.osagocalculator.data.model
 
 import com.google.gson.annotations.SerializedName
 
+data class CoefficientNetworkModel (
+    @SerializedName("factors")
+    val factors: List<Factor>
+        )
+
 data class Factor (
     @SerializedName("title")
     val title : String,

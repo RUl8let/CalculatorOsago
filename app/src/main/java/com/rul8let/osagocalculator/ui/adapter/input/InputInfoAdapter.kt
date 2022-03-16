@@ -25,6 +25,5 @@ class InputInfoAdapter(private val clickInputItem: (InfoInputEnum) -> Unit)
         override fun areContentsTheSame(oldItem: InputInfoItem, newItem: InputInfoItem): Boolean {
             return oldItem.texts==newItem.texts
         }
-
     }
 }

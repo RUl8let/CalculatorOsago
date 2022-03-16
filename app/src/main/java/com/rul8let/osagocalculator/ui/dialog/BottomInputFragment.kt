@@ -45,6 +45,7 @@ class BottomInputFragment : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = BottomCardInputBinding.inflate(inflater)
+        binding.root.minHeight = resources.displayMetrics.heightPixels/2
         return binding.root
     }
 
