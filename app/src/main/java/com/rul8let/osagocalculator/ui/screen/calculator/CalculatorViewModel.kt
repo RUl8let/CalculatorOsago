@@ -1,5 +1,6 @@
 package com.rul8let.osagocalculator.ui.screen.calculator
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -21,8 +22,8 @@ class CalculatorViewModel @Inject constructor(
 
     private val infoInputEnum = InfoInputEnum.values()
 
-    private val _expanded = MutableLiveData<Boolean>(false)
-    val expanded : LiveData<Boolean> = _expanded
+    private val _expandedCoefficientCard = MutableLiveData<Boolean>(false)
+    val expandedCoefficientCard : LiveData<Boolean> = _expandedCoefficientCard
 
     private val _coefficientList = MutableLiveData<List<CoefficientItem>>()
     val coefficientList : LiveData<List<CoefficientItem>> = _coefficientList
@@ -60,7 +61,7 @@ class CalculatorViewModel @Inject constructor(
     }
 
     fun changeExpanded(b: Boolean) {
-        _expanded.value = b
+        _expandedCoefficientCard.value = b
     }
 
     fun selectInputUpdate (type : InfoInputEnum){

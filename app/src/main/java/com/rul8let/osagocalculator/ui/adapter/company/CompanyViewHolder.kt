@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rul8let.osagocalculator.R
 import com.rul8let.osagocalculator.databinding.CompanyItemBinding
-import com.rul8let.osagocalculator.ui.binding.bindData
+import com.rul8let.osagocalculator.ui.binding.bindCompanyData
 import com.rul8let.osagocalculator.ui.model.CompanySealed.CompanyItem
 
 class CompanyViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -15,7 +15,7 @@ class CompanyViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
 
     fun bind(data: CompanyItem, clickInputItem: (CompanyItem) -> Unit){
         
-        binding.bindData(data)
+        binding.bindCompanyData(data)
 
         binding.cardItem.setOnClickListener {
             clickInputItem(data)

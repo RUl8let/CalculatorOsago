@@ -17,7 +17,9 @@ import com.rul8let.osagocalculator.databinding.CalculatorScreenBinding
 import com.rul8let.osagocalculator.ui.InfoInputEnum
 import com.rul8let.osagocalculator.ui.adapter.coefficient.CoefficientInfoAdapter
 import com.rul8let.osagocalculator.ui.adapter.input.InputInfoAdapter
+import com.rul8let.osagocalculator.ui.binding.bindCoefficientCard
 import com.rul8let.osagocalculator.ui.model.CompanySealed.CompanyItem
+import com.rul8let.osagocalculator.ui.util.safeNavigate
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,58 +42,28 @@ class CalculatorFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.bindInfoCard()
         binding.bindAdapterInput()
+        binding.coefficientsInfo.bindCoefficientCard(
+            viewModel.expandedCoefficientCard,
+            viewModel.coefficientList,
+            viewLifecycleOwner ) { expand ->
+            viewModel.changeExpanded(expand)
+        }
 
         viewModel.enabledButton.observe(viewLifecycleOwner){
             binding.button.isEnabled = it
         }
 
         binding.button.setOnClickListener {
-            findNavController().navigate(R.id.action_calculatorFragment_to_priceCalculationFragment)
+            findNavController().safeNavigate(CalculatorFragmentDirections.actionCalculatorFragmentToPriceCalculationFragment())
         }
 
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<CompanyItem>(keySelectItemPrice)
             ?.observe(viewLifecycleOwner) { priceData->
                 val action = CalculatorFragmentDirections
                     .actionCalculatorFragmentToBottomSelectCompanyFragment(priceData)
-                findNavController().navigate(action)
+                findNavController().safeNavigate(action)
             }
-    }
-
-    private fun CalculatorScreenBinding.bindInfoCard(){
-        val adapter = CoefficientInfoAdapter()
-        coefficientsInfo.coefficientList.adapter = adapter
-        coefficientsInfo.coefficientList.layoutManager = LinearLayoutManager(root.context)
-        coefficientsInfo.coefficientList.isNestedScrollingEnabled = false
-
-        coefficientsInfo.checkBoxExpand.setOnCheckedChangeListener { _, b ->
-            viewModel.changeExpanded(b)
-        }
-
-        viewModel.expanded.observe(viewLifecycleOwner){
-            coefficientsInfo.coefficientList.isVisible = it
-        }
-
-        viewModel.coefficientList.observe(viewLifecycleOwner){
-            adapter.submitList(it)
-            val text = getString(
-                R.string.coefficient_formula,
-                it[0].headerValue,
-                it[1].headerValue,
-                it[2].headerValue,
-                it[3].headerValue,
-                it[4].headerValue,
-                it[5].headerValue
-            )
-
-            val styledText = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                Html.fromHtml(text, Html.FROM_HTML_MODE_LEGACY)
-            } else {
-                Html.fromHtml(text)
-            }
-            coefficientsInfo.formulaText.text = styledText
-        }
     }
 
     private fun CalculatorScreenBinding.bindAdapterInput(){
@@ -107,7 +79,7 @@ class CalculatorFragment : Fragment(){
 
     private val clickInputItem = fun (type : InfoInputEnum){
         viewModel.selectInputUpdate(type)
-        findNavController().navigate(R.id.action_calculatorFragment_to_bottomInputFragment)
+        findNavController().safeNavigate(CalculatorFragmentDirections.actionCalculatorFragmentToBottomInputFragment())
     }
 
     override fun onDestroyView() {
@@ -118,5 +90,4 @@ class CalculatorFragment : Fragment(){
     companion object {
         const val keySelectItemPrice = "keySelectItemPrice"
     }
-
 }

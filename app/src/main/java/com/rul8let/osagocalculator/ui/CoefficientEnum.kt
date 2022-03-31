@@ -1,15 +1,19 @@
 package com.rul8let.osagocalculator.ui
 
+import com.rul8let.osagocalculator.OsagoApp
 import com.rul8let.osagocalculator.R
+import com.rul8let.osagocalculator.di.RetrofitModule
 import com.rul8let.osagocalculator.ui.model.CoefficientItem
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-enum class CoefficientEnum (val textArrayId : Int, val title : String){
-    BT(R.array.BT, "БТ"),
-    KM(R.array.KM, "КМ"),
-    KT(R.array.KT, "КТ"),
-    KBM(R.array.KBM, "КБМ"),
-    KO(R.array.KO, "КО"),
-    KBC(R.array.KBC, "КВС");
+enum class CoefficientEnum (val textArrayId : Int){
+    BT(R.array.BT),
+    KM(R.array.KM),
+    KT(R.array.KT),
+    KBM(R.array.KBM),
+    KO(R.array.KO),
+    KBC(R.array.KBC);
 
     companion object {
         fun generationBaseList(): List<CoefficientItem> {
@@ -19,7 +23,7 @@ enum class CoefficientEnum (val textArrayId : Int, val title : String){
                     CoefficientItem(
                         coefficient = "",
                         idArrayString = it.textArrayId,
-                        headerValue = it.title
+                        headerValue = OsagoApp.appContext.resources.getStringArray(it.textArrayId)[0]
                     )
                 )
             }

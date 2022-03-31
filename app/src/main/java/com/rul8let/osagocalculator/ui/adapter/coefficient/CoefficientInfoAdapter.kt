@@ -1,5 +1,6 @@
 package com.rul8let.osagocalculator.ui.adapter.coefficient
 
+import android.util.Log
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -12,6 +13,7 @@ class CoefficientInfoAdapter : ListAdapter<CoefficientItem, CoefficientViewHolde
 
     override fun onBindViewHolder(holder: CoefficientViewHolder, position: Int) {
         holder.bind(getItem(position))
+        Log.e("CoefficientInfoAdapter","${position}")
     }
 
     object CoefficientDiffCallback : DiffUtil.ItemCallback<CoefficientItem>() {

@@ -1,5 +1,6 @@
 package com.rul8let.osagocalculator.ui.adapter.input
 
+import android.util.Log
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -15,6 +16,7 @@ class InputInfoAdapter(private val clickInputItem: (InfoInputEnum) -> Unit)
 
     override fun onBindViewHolder(holder: InInputInfoViewHolder, position: Int) {
         holder.bind(getItem(position), clickInputItem)
+        Log.e("InputInfoAdapter","${position}")
     }
 
     object InputInfoCallback : DiffUtil.ItemCallback<InputInfoItem>(){

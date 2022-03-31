@@ -10,7 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.rul8let.osagocalculator.R
 import com.rul8let.osagocalculator.databinding.BottomCardSelectCompanyBinding
-import com.rul8let.osagocalculator.ui.binding.bindData
+import com.rul8let.osagocalculator.ui.binding.bindCompanyData
 
 class BottomSelectCompanyFragment : BottomSheetDialogFragment() {
 
@@ -37,7 +37,7 @@ class BottomSelectCompanyFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         val data = args.selectCompany
         if (data!=null){
-            binding.selectCompanyCard.bindData(data)
+            binding.selectCompanyCard.bindCompanyData(data)
         }
 
         binding.readyButton.setOnClickListener {

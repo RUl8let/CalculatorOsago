@@ -26,11 +26,11 @@ class PriceCalculationViewModel @Inject constructor(
     private val _pricePolicy = MutableLiveData<List<CompanySealed>>(emptyList())
     val pricePolicy : LiveData<List<CompanySealed>> = _pricePolicy
 
-    private val _expanded = MutableLiveData<Boolean>(false)
-    val expanded : LiveData<Boolean> = _expanded
+    private val _expandedCoefficientCard = MutableLiveData<Boolean>(false)
+    val expandedCoefficientCard : LiveData<Boolean> = _expandedCoefficientCard
 
     fun changeExpanded(b: Boolean) {
-        _expanded.value = b
+        _expandedCoefficientCard.value = b
     }
 
     init {
